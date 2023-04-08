@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react"
 import { api } from "../../services/api"
+import { Link } from "react-router-dom"
+import './styles.css'
 
 export const Home = () => {
 
     // https://api.themoviedb.org/3/movie/550?api_key=916b3d045649e2789aeb4cab5a2dc88d
 
     const [movies, setMovies] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
 
@@ -19,11 +22,20 @@ export const Home = () => {
             })
 
             setMovies(response.data.results.slice(0, 10))
+            setLoading(false)
         }
 
         loadMovies()
 
     }, [])
+
+    if (loading) {
+        return (
+            <div className="loading">
+                <h2>Carregando conteúdo...</h2>
+            </div>
+        )
+    }
 
 
     return (
@@ -34,7 +46,10 @@ export const Home = () => {
                         return (
                             <article key={movie.id}>
                                 <strong>{movie.title}</strong>
-                                <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={movie.title} />
+                                <img
+                                    src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                                    alt={movie.title} />
+                                <Link to={`movie/${movie.id}`}>Acessar</Link>
                             </article>
                         )
                     })
