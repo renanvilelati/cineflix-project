@@ -5,7 +5,7 @@ import './styles.css'
 export const Header = () => {
     return (
         <header>
-            <Link className="logo" to='/'>Prime Flix</Link>
+            <Link className="logo" to='/'>CineFlix</Link>
             <NavLink className='favoritos' to='/movies'>My movies</NavLink>
         </header>
     )
