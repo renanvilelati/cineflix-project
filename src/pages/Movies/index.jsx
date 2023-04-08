@@ -60,7 +60,10 @@ export const Movies = () => {
             <div className="area-buttons">
                 <button>Salvar</button>
                 <button>
-                    <a href="#">Trailer</a>
+                    <a
+                        href={`https://youtube.com/results?search_query=${movie.title} trailer`}
+                        rel='external'
+                        target='_blank'> Trailer </a>
                 </button>
             </div>
         </div>
