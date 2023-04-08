@@ -42,7 +42,7 @@ export const Favorites = () => {
                                 <span>{movie.title}</span>
 
                                 <div>
-                                    <Link to={`movie/${movie.id}`} >Ver detalhes</Link>
+                                    <Link to={`../movie/${movie.id}`} >Ver detalhes</Link>
                                     <button onClick={() => deleteMovie(movie.id)}>Excluir</button>
                                 </div>
                             </li>
