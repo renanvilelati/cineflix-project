@@ -2,6 +2,8 @@ import { useEffect, useState, } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { api } from "../../services/api"
 
+import { toast } from "react-toastify"
+
 import './styles.css'
 
 export const Movies = () => {
@@ -25,7 +27,7 @@ export const Movies = () => {
                     setLoading(false)
                 })
                 .catch(error => {
-                    console.log('Filme não encontrado!');
+                    console.log('Movie not found!');
                     navigate('/', { replace: true })
                     return
                 })
@@ -34,14 +36,40 @@ export const Movies = () => {
         loadMovie()
 
         return () => {
-            console.log('Componente desmontado');
+            console.log('Disassembled component!');
         }
     }, [navigate, id])
+
+
+
+
+    const handleSaveMovie = () => {
+        // are movies saved in the localStorage?
+        const myMovieList = localStorage.getItem('@cineflix')
+
+        // if there are, parse it into JSON, if not, create an array
+        let savedMovies = JSON.parse(myMovieList) || []
+
+        const hasMovie = savedMovies.some((movieSaved) => movieSaved.id === movie.id)
+
+        if (hasMovie) {
+            toast.warning('Movie already saved in the list')
+            return
+        }
+
+        savedMovies.push(movie)
+        localStorage.setItem('@cineflix', JSON.stringify(savedMovies))
+        toast.success('Successfully saved movie!')
+
+    }
+
+
+
 
     if (loading) {
         return (
             <div className="movie-info">
-                <h2>Carregando detalhes do filme...</h2>
+                <h2>Loading movie details...</h2>
             </div>
         )
     }
@@ -52,13 +80,13 @@ export const Movies = () => {
             <img
                 src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
                 alt={movie.title} />
-            <h3>Sinopse</h3>
+            <h3>Overview</h3>
             <p>
                 {movie.overview}
             </p>
-            <strong>Avaliação: {movie.vote_average} / 10</strong>
+            <strong>Average: {movie.vote_average} / 10</strong>
             <div className="area-buttons">
-                <button>Salvar</button>
+                <button onClick={handleSaveMovie}>Save</button>
                 <button>
                     <a
                         href={`https://youtube.com/results?search_query=${movie.title} trailer`}

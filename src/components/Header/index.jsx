@@ -6,7 +6,7 @@ export const Header = () => {
     return (
         <header>
             <Link className="logo" to='/'>CineFlix</Link>
-            <NavLink className='favoritos' to='/movies'>My movies</NavLink>
+            <NavLink className='favoritos' to='/favorites'>My movies</NavLink>
         </header>
     )
 }
