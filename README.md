@@ -3,6 +3,10 @@
    
 </h1>
 
+# Link to the app
+
+[Cineflix](https://renanvilelati-cineflix.netlify.app/)
+
 # Summary
 
 - [About](#-sobre)
