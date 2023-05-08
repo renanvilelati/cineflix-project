@@ -1,57 +1,47 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import './styles.css'
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import './styles.css';
 
-import { toast } from 'react-toastify'
+import { toast } from 'react-toastify';
 
 export const Favorites = () => {
+  const [movies, setMovies] = useState([]);
 
-    const [movies, setMovies] = useState([])
+  useEffect(() => {
+    const myList = localStorage.getItem('@cineflix');
+    setMovies(JSON.parse(myList) || []);
+  }, []);
 
-    useEffect(() => {
+  function deleteMovie(id) {
+    let movieFilter = movies.filter((movie) => {
+      return movie.id !== id;
+    });
 
-        const myList = localStorage.getItem('@cineflix')
-        setMovies(JSON.parse(myList) || [])
+    setMovies(movieFilter);
+    localStorage.setItem('@cineflix', JSON.stringify(movieFilter));
+    toast.success('successfully deleted movie!');
+  }
 
-    }, [])
+  return (
+    <div className='my-movies'>
+      <h1>My movies</h1>
 
-    function deleteMovie(id) {
-        let movieFilter = movies.filter((movie) => {
-            return (movie.id !== id)
-        })
+      {movies.length === 0 && <h2>You don't have any saved movies 🙁</h2>}
 
-        setMovies(movieFilter)
-        localStorage.setItem('@cineflix', JSON.stringify(movieFilter))
-        toast.success('successfully deleted movie!')
-    }
+      <ul>
+        {movies.map((movie) => {
+          return (
+            <li key={movie.id}>
+              <span>{movie.title}</span>
 
-    return (
-        <div className="my-movies">
-
-            <h1>
-                My movies
-            </h1>
-
-            {movies.length === 0 && <h2>You don't have any saved movies 🙁</h2>}
-
-            <ul>
-                {
-                    movies.map(movie => {
-                        return (
-                            <li key={movie.id}>
-                                <span>{movie.title}</span>
-
-                                <div>
-                                    <Link to={`../movie/${movie.id}`} >Ver detalhes</Link>
-                                    <button onClick={() => deleteMovie(movie.id)}>Excluir</button>
-                                </div>
-                            </li>
-                        )
-                    })
-                }
-            </ul>
-        </div>
-
-
-    )
-}
+              <div className='mymovies-btn'>
+                <Link to={`../movie/${movie.id}`}>Ver detalhes</Link>
+                <button onClick={() => deleteMovie(movie.id)}>Excluir</button>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
