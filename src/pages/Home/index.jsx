@@ -42,7 +42,7 @@ export const Home = () => {
                 src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                 alt={movie.title}
               />
-              <Link to={`movie/${movie.id}`}>Acessar</Link>
+              <Link to={`movie/${movie.id}`}>Access</Link>
             </article>
           );
         })}
