@@ -7,19 +7,19 @@
 
 [Cineflix](https://renanvilelati-cineflix.netlify.app/)
 
-# Summary
+# 🔍 Summary
 
 - [About](#-sobre)
 - [Tech Stack](#-tecnologias-utilizadas)
 - [How to download](#-como-baixar-o-projeto)
 
-## 🔖&nbsp; About
+## 📗 About
 
 The project consists of listing the films being shown at the cinema and allows the user to save their favorite films.
 
 ---
 
-## Next Updates
+## 👨‍🚀 Next Updates
 
 - Change to styled-components
 - Improve page styles
@@ -36,7 +36,7 @@ The project was developed using the following technologies
 
 ---
 
-## 🗂 How to download
+## 🎮 How to download
 
 ```bash
 
