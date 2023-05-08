@@ -1,56 +1,68 @@
 .movie-info {
-    margin: 0 auto;
-    margin-top: 18px;
-    display: flex;
-    flex-direction: column;
-    max-width: 800px;
-    padding: 0 8px;
+  margin: 0 auto;
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  color: #fff;
+  padding: 6rem 8px;
+  background-color: #111;
 }
 
 .movie-info h1 {
-    margin: 14px 0;
+  margin: 14px 0;
+}
+
+.movie-info h2 {
+  font-size: 2rem;
+  padding-bottom: 1rem;
 }
 
 .movie-info img {
-    border-radius: 8px;
-    width: 800px;
-    max-width: 100%;
-    max-height: 400px;
-    object-fit: cover;
+  border-radius: 8px;
+  width: 1000px;
+  max-width: 100%;
+  max-height: 600px;
+  object-fit: cover;
 }
 
 .movie-info h3 {
-    margin-top: 14px;
+  margin-top: 14px;
+  color: #ccc;
+  padding: 1rem 0;
+}
+
+.movie-info p {
+  color: #ddd;
+  padding: 2rem 0;
 }
 
 .movie-info span {
-    margin: 8px 0;
+  margin: 8px 0;
 }
 
-.area-buttons button {
-    margin-right: 12px;
-    margin-top: 14px;
-    margin-left: 0;
-    font-size: 20px;
-    border: 0;
-    outline: none;
-    padding: 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.5s;
-}
-
-.area-buttons button:hover {
-    background-color: brown;
-    color: #FFF;
-}
-
+.area-buttons button,
 .area-buttons a {
-    text-decoration: none;
-    color: #000;
-    transition: all 0.5s;
+  margin-right: 12px;
+  margin-top: 14px;
+  margin-left: 0;
+  font-size: 20px;
+  border: 0;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #124070;
+  padding: 0.5rem 2rem;
+  color: #fff;
+  border-radius: 4px;
+  transition: all 0.5s;
+}
+
+.area-buttons button:hover,
+.area-buttons a:hover {
+  background-color: #0957aa;
 }
 
 .area-buttons a:hover {
-    color: #FFF;
+  color: #fff;
 }
